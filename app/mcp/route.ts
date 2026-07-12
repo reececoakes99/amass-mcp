@@ -51,7 +51,7 @@ const handler = createMcpHandler(
         amass: { description: "Build an OWASP Amass command for authorized subdomain enumeration or intelligence gathering" },
       },
     },
-  },
+  } as any,
   { basePath: "", verboseLogs: true, maxDuration: 60, disableSse: true },
 );
 
