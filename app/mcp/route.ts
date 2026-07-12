@@ -19,9 +19,7 @@ const handler = createMcpHandler(
         const args: string[] = [subcommand];
 
         if (subcommand === "enum") {
-          if (!domain) {
-            return { content: [{ type: "text", text: "Error: domain is required for the enum subcommand." }] };
-          }
+          if (!domain) return { content: [{ type: "text", text: "Error: domain is required for the enum subcommand." }] };
           args.push("-d", domain);
           if (enum_type === "passive") args.push("-passive");
           if (enum_brute) {
@@ -29,9 +27,7 @@ const handler = createMcpHandler(
             if (enum_brute_wordlist) args.push("-w", enum_brute_wordlist);
           }
         } else {
-          if (!domain && !intel_organization) {
-            return { content: [{ type: "text", text: "Error: either domain or intel_organization is required for the intel subcommand." }] };
-          }
+          if (!domain && !intel_organization) return { content: [{ type: "text", text: "Error: either domain or intel_organization is required for the intel subcommand." }] };
           if (domain) args.push("-d", domain);
           if (intel_organization) args.push("-org", intel_organization);
           if (intel_whois) args.push("-whois");
@@ -56,7 +52,7 @@ const handler = createMcpHandler(
         },
       },
     },
-  },
+  } as any,
   {
     basePath: "",
     verboseLogs: true,
